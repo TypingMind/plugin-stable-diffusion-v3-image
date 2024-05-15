@@ -27,7 +27,7 @@ function validateAPIKey(apiKey) {
 async function generateImageFromStabilityAPI(
   apiKey,
   prompt,
-  { output_format, aspect_ratio, model } = {}
+  { output_format, aspect_ratio, model, negative_prompt } = {}
 ) {
   const apiUrl = 'https://api.stability.ai/v2beta/stable-image/generate/sd3';
 
@@ -38,6 +38,7 @@ async function generateImageFromStabilityAPI(
   output_format && body.append('output_format', output_format);
   aspect_ratio && body.append('aspect_ratio', aspect_ratio);
   model && body.append('model', model);
+  negative_prompt && body.append("negative_prompt", negative_prompt);
 
   const response = await fetch(apiUrl, {
     method: 'POST',
