@@ -43,7 +43,7 @@
     {
       "name": "negative_prompt",
       "type": "string",
-      "label": "Negvative prompt",
+      "label": "Negative prompt",
       "description": "Optional, a blurb of text describing what you do not wish to see in the output image",
       "type": "string"
     }
