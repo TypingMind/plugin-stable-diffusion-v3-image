@@ -39,6 +39,13 @@
       "description": "Optional, default: \"sd3\"",
       "type": "enum",
       "values": ["sd3", "sd3-turbo"]
+    },
+    {
+      "name": "negative_prompt",
+      "type": "string",
+      "label": "Negvative prompt",
+      "description": "Optional, a blurb of text describing what you do not wish to see in the output image",
+      "type": "string"
     }
   ],
   "iconURL": "/stable-diffusion.png",
