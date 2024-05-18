@@ -44,8 +44,7 @@
       "name": "negative_prompt",
       "type": "string",
       "label": "Negative prompt",
-      "description": "Optional, a blurb of text describing what you do not wish to see in the output image",
-      "type": "string"
+      "description": "Optional, a blurb of text describing what you do not wish to see in the output image"
     }
   ],
   "iconURL": "/stable-diffusion.png",
