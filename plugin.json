@@ -36,9 +36,10 @@
     {
       "name": "model",
       "label": "Model to use for generation",
-      "description": "Optional, default: \"sd3\"",
+      "description": "Optional, default: \"sd3-large\"",
       "type": "enum",
-      "values": ["sd3", "sd3-turbo"]
+      "values": ["sd3-medium", "sd3-large", "sd3-large-turbo"],
+      "defaultValue": "sd3-large"
     },
     {
       "name": "negative_prompt",
