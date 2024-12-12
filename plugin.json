@@ -14,7 +14,8 @@
       "label": "Format of the generated image",
       "description": "Optional, default: \"png\"",
       "type": "enum",
-      "values": ["png", "jpeg"]
+      "values": ["png", "jpeg"],
+      "defaultValue": "png"
     },
     {
       "name": "aspect_ratio",
@@ -31,7 +32,8 @@
         "5:4",
         "9:16",
         "9:21"
-      ]
+      ],
+      "defaultValue": "1:1"
     },
     {
       "name": "model",
@@ -44,7 +46,8 @@
     {
       "name": "negative_prompt",
       "label": "Negative prompt",
-      "description": "Optional, a blurb of text describing what you do not wish to see in the output image"
+      "description": "Optional, a blurb of text describing what you do not wish to see in the output image",
+      "defaultValue": ""
     }
   ],
   "iconURL": "https://www.typingmind.com/stable-diffusion.png",
