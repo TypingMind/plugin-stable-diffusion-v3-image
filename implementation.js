@@ -1,13 +1,18 @@
 async function image_generation_via_stable_diffusion_3(params, userSettings) {
-  const { prompt } = params;
-  const { stabilityAPIKey } = userSettings;
+  const { prompt, negative_prompt } = params;
+  const { stabilityAPIKey, output_format, aspect_ratio, model } = userSettings;
   validateAPIKey(stabilityAPIKey);
 
   try {
     const imageData = await generateImageFromStabilityAPI(
       stabilityAPIKey,
       prompt,
-      userSettings
+      {
+        output_format,
+        aspect_ratio,
+        model,
+        negative_prompt
+      }
     );
 
     return imageData;
