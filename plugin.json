@@ -40,8 +40,15 @@
       "label": "Model to use for generation",
       "description": "Optional, default: \"sd3-large\"",
       "type": "enum",
-      "values": ["sd3-medium", "sd3-large", "sd3-large-turbo"],
-      "defaultValue": "sd3-large"
+      "values": [
+        "sd3.5-medium",
+        "sd3.5-large",
+        "sd3.5-large-turbo",
+        "sd3-medium",
+        "sd3-large",
+        "sd3-large-turbo"
+      ], 
+      "defaultValue": "sd3.5-medium"
     }
   ],
   "iconURL": "https://www.typingmind.com/stable-diffusion.png",

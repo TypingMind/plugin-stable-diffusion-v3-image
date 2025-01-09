@@ -1,7 +1,19 @@
+const MODEL_NAMES = {
+  SD3_5_MEDIUM: 'sd3.5-medium',
+  SD3_5_LARGE: 'sd3.5-large',
+  SD3_5_LARGE_TURBO: 'sd3.5-large-turbo',
+  SD3_MEDIUM: 'sd3-medium',
+  SD3_LARGE: 'sd3-large',
+  SD3_LARGE_TURBO: 'sd3-large-turbo',
+};
+
+const UNSUPPORTED_NEGATIVE_PROMP_MODELS = [MODEL_NAMES.SD3_LARGE_TURBO];
+
 async function image_generation_via_stable_diffusion_3(params, userSettings) {
   const { prompt, negative_prompt } = params;
   const { stabilityAPIKey, output_format, aspect_ratio, model } = userSettings;
   validateAPIKey(stabilityAPIKey);
+  validateNegativePrompt(model, negative_prompt);
 
   try {
     const imageData = await generateImageFromStabilityAPI(
@@ -11,14 +23,24 @@ async function image_generation_via_stable_diffusion_3(params, userSettings) {
         output_format,
         aspect_ratio,
         model,
-        negative_prompt
+        negative_prompt: UNSUPPORTED_NEGATIVE_PROMP_MODELS.includes(model) ? negative_prompt : undefined,
       }
     );
-
     return imageData;
   } catch (error) {
     console.error('Error generating image:', error);
     throw new Error('Error: ' + error.message);
+  }
+}
+
+function isNonEmptyString(param) {
+  return typeof param === 'string' && param.trim() !== '';
+}
+
+function validateNegativePrompt(model, negative_prompt) {
+  // Validate negative prompt available with selected model  
+  if (UNSUPPORTED_NEGATIVE_PROMP_MODELS.includes(model) && isNonEmptyString(negative_prompt)) {
+    throw new Error(`Negative prompts are not supported with ${model} model. Please select a different model in the Plugin User Settings.`) 
   }
 }
 
