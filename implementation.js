@@ -9,18 +9,18 @@ const MODEL_NAMES = {
 
 const UNSUPPORTED_NEGATIVE_PROMP_MODELS = [MODEL_NAMES.SD3_LARGE_TURBO];
 
-async function image_generation_via_stable_diffusion_3(params, userSettings) {
+async function image_generation_via_stable_diffusion_3_7659225(params, userSettings) {
   const { prompt, negative_prompt } = params;
   const { stabilityAPIKey, output_format, aspect_ratio, model } = userSettings;
   validateAPIKey(stabilityAPIKey);
-  validateNegativePrompt(model, negative_prompt);
+  
   let requestPrompt = prompt;
   let requestNegativePrompt = negative_prompt;
   if (negative_prompt && UNSUPPORTED_NEGATIVE_PROMP_MODELS.includes(model)) {
     requestNegativePrompt = undefined;
     requestPrompt = `${requestPrompt} Do not include ${requestNegativePrompt}`
   }
-  
+
   try {
     const imageData = await generateImageFromStabilityAPI(
       stabilityAPIKey,
@@ -36,17 +36,6 @@ async function image_generation_via_stable_diffusion_3(params, userSettings) {
   } catch (error) {
     console.error('Error generating image:', error);
     throw new Error('Error: ' + error.message);
-  }
-}
-
-function isNonEmptyString(param) {
-  return typeof param === 'string' && param.trim() !== '';
-}
-
-function validateNegativePrompt(model, negative_prompt) {
-  // Validate negative prompt available with selected model  
-  if (UNSUPPORTED_NEGATIVE_PROMP_MODELS.includes(model) && isNonEmptyString(negative_prompt)) {
-    throw new Error(`Negative prompts are not supported with ${model} model. Please select a different model in the Plugin User Settings.`) 
   }
 }
 
