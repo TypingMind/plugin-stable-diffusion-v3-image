@@ -18,7 +18,7 @@ async function image_generation_via_stable_diffusion_3(params, userSettings) {
   let requestNegativePrompt = negative_prompt;
   if (negative_prompt && UNSUPPORTED_NEGATIVE_PROMP_MODELS.includes(model)) {
     requestNegativePrompt = undefined;
-    requestPrompt = `${requestPrompt} Do not include ${requestNegativePrompt}`
+    requestPrompt = `${requestPrompt} Do not include ${negative_prompt}`
   }
 
   try {
