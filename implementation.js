@@ -14,16 +14,22 @@ async function image_generation_via_stable_diffusion_3(params, userSettings) {
   const { stabilityAPIKey, output_format, aspect_ratio, model } = userSettings;
   validateAPIKey(stabilityAPIKey);
   validateNegativePrompt(model, negative_prompt);
-
+  let requestPrompt = prompt;
+  let requestNegativePrompt = negative_prompt;
+  if (negative_prompt && UNSUPPORTED_NEGATIVE_PROMP_MODELS.includes(model)) {
+    requestNegativePrompt = undefined;
+    requestPrompt = `${requestPrompt} Do not include ${requestNegativePrompt}`
+  }
+  
   try {
     const imageData = await generateImageFromStabilityAPI(
       stabilityAPIKey,
-      prompt,
+      requestPrompt,
       {
         output_format,
         aspect_ratio,
         model,
-        negative_prompt: UNSUPPORTED_NEGATIVE_PROMP_MODELS.includes(model) ? negative_prompt : undefined,
+        negative_prompt: requestNegativePrompt,
       }
     );
     return imageData;
