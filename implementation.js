@@ -9,7 +9,7 @@ const MODEL_NAMES = {
 
 const UNSUPPORTED_NEGATIVE_PROMP_MODELS = [MODEL_NAMES.SD3_LARGE_TURBO];
 
-async function image_generation_via_stable_diffusion_3_7659225(params, userSettings) {
+async function image_generation_via_stable_diffusion_3(params, userSettings) {
   const { prompt, negative_prompt } = params;
   const { stabilityAPIKey, output_format, aspect_ratio, model } = userSettings;
   validateAPIKey(stabilityAPIKey);
