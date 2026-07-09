@@ -50,7 +50,7 @@
       "defaultValue": ""
     }
   ],
-  "iconURL": "https://www.typingmind.com/stable-diffusion.png",
+  "iconURL": "https://custom.typingmind.com/assets/plugins/stable-diffusion.webp",
   "title": "Stable Diffusion v3 Image",
   "openaiSpec": {
     "name": "image_generation_via_stable_diffusion_3",
