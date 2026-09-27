@@ -83,5 +83,5 @@
     "hasHeaders": true
   },
   "implementationType": "javascript",
-  "outputType": "render_markdown"
+  "outputType": "cards"
 }
